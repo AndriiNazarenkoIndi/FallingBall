@@ -2,7 +2,7 @@ public abstract class BaseSaveSystemSoundSetting
 {
     protected AudioManager _audioManager;
     protected SoundDataToSave _soundSetting;
-    protected SaveSystem _saveSystem;
+    protected ISaveSystem _saveSystem;
     private string _fileName;
 
     public BaseSaveSystemSoundSetting(AudioManager audioManager)

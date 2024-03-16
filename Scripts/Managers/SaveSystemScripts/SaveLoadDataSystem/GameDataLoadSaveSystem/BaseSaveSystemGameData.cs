@@ -3,9 +3,8 @@ public abstract class BaseSaveSystemGameData
     protected CounterScore _counterScore;
     protected DiamondsCounter _diamondsCounter;
     protected ShopManager _shopManager;
-
     protected GameDataToSave _gameData;
-    protected SaveSystem _saveSystem;
+    protected ISaveSystem _saveSystem;
     private string _fileName;
 
     protected BaseSaveSystemGameData(CounterScore counterScore, DiamondsCounter diamondsCounter, ShopManager shopManager) 

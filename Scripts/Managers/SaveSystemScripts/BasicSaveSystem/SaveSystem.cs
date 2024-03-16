@@ -2,7 +2,7 @@ using UnityEngine;
 using System.IO;
 using System;
 
-public class SaveSystem
+public class SaveSystem: ISaveSystem
 {
     private string _pathToFile;
 
@@ -24,7 +24,6 @@ public class SaveSystem
             Debug.Log("Save failed: " + ex);
         }
     }
-
 
     public void Load(IDataSaveble dataSaveble)
     {

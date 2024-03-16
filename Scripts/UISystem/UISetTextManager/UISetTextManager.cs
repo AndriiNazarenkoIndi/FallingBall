@@ -24,6 +24,8 @@ public class UISetTextManager : MonoBehaviour
     public DiamondsCounter GetDiamondsCounter => _diamondsCounter;
     public ShopManager GetShopManager => _shopManager;
 
+    private TextSetter _textSetter = new TextSetter();
+
     private void Start()
     {
         BaseStartSetting();
@@ -57,34 +59,26 @@ public class UISetTextManager : MonoBehaviour
 
     public void SetLocalScore()
     {
-        SetText(_counterScore, _localScoreText, _counterScore.LocalScore);
+        _textSetter.IntValueSetText(_counterScore, _localScoreText, _counterScore.LocalScore);
     }
 
     public void SetMaxScore()
     {
-        SetText(_counterScore, _maxScoreText, _counterScore.MaxScore);
+        _textSetter.IntValueSetText(_counterScore, _maxScoreText, _counterScore.MaxScore);
     }
 
     public void SetDiamondsScore()
     {
-        SetText(_diamondsCounter, _diamondScoreText, _diamondsCounter.ScoreDiamonds);
+        _textSetter.IntValueSetText(_diamondsCounter, _diamondScoreText, _diamondsCounter.ScoreDiamonds);
     }
 
     public void SetPriceExtraLife()
     {
-        SetText(_shopManager, _priceExtraLifeText, _shopManager.PriceExtraLife);
+        _textSetter.IntValueSetText(_shopManager, _priceExtraLifeText, _shopManager.PriceExtraLife);
     }
 
     public void SetExtraLifeCount()
     {
-        SetText(_shopManager, _extraLifeCountText, _shopManager.TotalAmountExtraLife);
-    }
-
-    private void SetText<T>(T obj, TMP_Text textScore, int scoreValue)
-    {
-        if (obj != null)
-        {
-            textScore.text = scoreValue.ToString();
-        }
+        _textSetter.IntValueSetText(_shopManager, _extraLifeCountText, _shopManager.TotalAmountExtraLife);
     }
 }
