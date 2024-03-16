@@ -4,7 +4,7 @@ using TMPro;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField] private DiamondsCounter _diamondsCounter;
-    [SerializeField] [Range(0, 1000)] private int _priceExtraLife = 100;
+    [SerializeField] private ShopSetting _shopSetting;
 
     private int _amountExtraLife = 1;
     private int _totalAmountExtraLife = 0;
@@ -15,7 +15,7 @@ public class ShopManager : MonoBehaviour
     public delegate void UpdatePrice();
     public event UpdatePrice UpdatePriceEvent;
 
-    public int PriceExtraLife => _priceExtraLife;
+    public int PriceExtraLife => _shopSetting.ExtraLifePrice;
 
     public int TotalAmountExtraLife
     {
@@ -30,7 +30,7 @@ public class ShopManager : MonoBehaviour
 
     public void AddExtraLife()
     {
-        if (_diamondsCounter != null && _diamondsCounter.ScoreDiamonds >= _priceExtraLife)
+        if (_diamondsCounter != null && _diamondsCounter.ScoreDiamonds >= _shopSetting.ExtraLifePrice)
         {
             _totalAmountExtraLife += _amountExtraLife;
             BuyExtraLifeEvent?.Invoke();

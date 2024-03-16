@@ -11,7 +11,7 @@ public class UISetTextEventManager : MonoBehaviour
     private DiamondsCounter _diamondsCounter;
     private ShopManager _shopManager;
     private GameManager _gameManager;
-    private EventAttacherDetacher _eventAttacherDetacher;
+    private EventAttacherDetacher _eventAttacherDetacher = new EventAttacherDetacher();
 
     private void Start()
     {
@@ -33,7 +33,6 @@ public class UISetTextEventManager : MonoBehaviour
         _diamondsCounter = _uiSetTextManager.GetDiamondsCounter;
         _shopManager = _uiSetTextManager.GetShopManager;
         _gameManager = _uiSetTextManager.GetGameManager;
-        _eventAttacherDetacher = new EventAttacherDetacher();
     }
 
     #region Attaching/Detaching ToEveryone
@@ -117,7 +116,7 @@ public class UISetTextEventManager : MonoBehaviour
 
     private void DetachShopBuyEvent()
     {
-        _eventAttacherDetacher.AttachDetach(_shopManager, () => _shopManager.UpdatePriceEvent += _uiSetTextManager.SetPriceExtraLife);
+        _eventAttacherDetacher.AttachDetach(_shopManager, () => _shopManager.UpdatePriceEvent -= _uiSetTextManager.SetPriceExtraLife);
     }
 
     private void AttachUpdateExtraLifeCountEvent()

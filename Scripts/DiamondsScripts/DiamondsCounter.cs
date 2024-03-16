@@ -3,14 +3,14 @@ using UnityEngine;
 public class DiamondsCounter : MonoBehaviour
 {
     [SerializeField] private ShopManager _shopManager;
+    [SerializeField] private ScoreValueSetting _scoreValueSetting;
 
-    private int _maxDiamondValue = 9999;
     private int _diamondScore = 0;
 
     public delegate void DiamondsCounterDelegate();
     public event DiamondsCounterDelegate DiamondScoreUpdate;
 
-    private delegate void EventSubscribe();
+    public ShopManager GetShopManager => _shopManager;
 
     public int ScoreDiamonds
     {
@@ -18,32 +18,9 @@ public class DiamondsCounter : MonoBehaviour
         set { _diamondScore = value; }
     }
 
-    private void Start()
-    {
-        SubscribeEvents();
-    }
-    
-    private void SubscribeEvents()
-    {
-        SubscribeUnsubscribeEvent(_shopManager, () => _shopManager.BuyExtraLifeEvent += DiamondScoreSub);
-    }
-
-    private void UnsubscribeEvents()
-    {
-        SubscribeUnsubscribeEvent(_shopManager, () => _shopManager.BuyExtraLifeEvent -= DiamondScoreSub);
-    }
-
-    private void SubscribeUnsubscribeEvent<T>(T obj, EventSubscribe EventSubscribe)
-    {
-        if (obj != null)
-        {
-            EventSubscribe();
-        }
-    }
-
     public void DiamondScoreAdd()
     {
-        if (_diamondScore < _maxDiamondValue)
+        if (_diamondScore < _scoreValueSetting.MaxDiamondValue)
         {
             _diamondScore++;
             DiamondScoreUpdate?.Invoke();
@@ -57,10 +34,5 @@ public class DiamondsCounter : MonoBehaviour
             _diamondScore -= _shopManager.PriceExtraLife;
             DiamondScoreUpdate?.Invoke();
         }
-    }
-
-    private void OnDestroy()
-    {
-        UnsubscribeEvents();
     }
 }
