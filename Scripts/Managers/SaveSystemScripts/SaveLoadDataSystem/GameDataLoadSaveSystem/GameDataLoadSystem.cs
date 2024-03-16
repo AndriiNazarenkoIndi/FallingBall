@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-public class GameDataLoadSystem : BaseSaveSystemGameData
+public class GameDataLoadSystem : BaseSaveSystemGameData, ILoad
 {
     public GameDataLoadSystem(CounterScore counterScore, DiamondsCounter diamondsCounter, ShopManager shopManager) : 
         base(counterScore, diamondsCounter, shopManager) { }
 
-    public void LoadGameData()
+    public void Load()
     {
         try
         {

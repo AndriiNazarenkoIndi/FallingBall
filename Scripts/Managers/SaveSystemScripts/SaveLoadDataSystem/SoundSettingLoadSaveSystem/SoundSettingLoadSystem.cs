@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public class SoundSettingLoadSystem : BaseSaveSystemSoundSetting
+public class SoundSettingLoadSystem : BaseSaveSystemSoundSetting, ILoad
 {
     public SoundSettingLoadSystem(AudioManager audioManager) : base(audioManager) { }
 
-    public void LoadSoundData()
+    public void Load()
     {
         try
         {

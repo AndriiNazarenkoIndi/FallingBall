@@ -4,8 +4,8 @@ public class SaveLoadManagerSoundSetting : MonoBehaviour
 {
     [SerializeField] private AudioManager _audioManager;
 
-    private SoundSettingSaveSystem _soundSettingSaveSystem;
-    private SoundSettingLoadSystem _soundSettingLoadSystem;
+    private ISave _soundSettingSaveSystem;
+    private ILoad _soundSettingLoadSystem;
 
     private void Awake()
     {
@@ -26,7 +26,11 @@ public class SaveLoadManagerSoundSetting : MonoBehaviour
     {
         if(_soundSettingSaveSystem != null)
         {
-            _soundSettingLoadSystem.LoadSoundData();
+            _soundSettingLoadSystem.Load();
+        }
+        else
+        {
+            Debug.Log("SoundSettingLoadSystem is Null. Load is Failed.");
         }
     }
 
@@ -34,7 +38,11 @@ public class SaveLoadManagerSoundSetting : MonoBehaviour
     {
         if (_soundSettingSaveSystem != null)
         {
-            _soundSettingSaveSystem.SaveSoundData();
+            _soundSettingSaveSystem.Save();
+        }
+        else
+        {
+            Debug.Log("SoundSettingSaveSystem is Null. Save is Failed.");
         }
     }
 }

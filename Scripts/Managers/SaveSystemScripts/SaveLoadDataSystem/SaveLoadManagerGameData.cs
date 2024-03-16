@@ -6,8 +6,8 @@ public class SaveLoadManagerGameData : MonoBehaviour
     [SerializeField] private DiamondsCounter _diamondsCounter;
     [SerializeField] private ShopManager _shopManager;
 
-    private GameDataSaveSystem _gameDataSaveSystem;
-    private GameDataLoadSystem _gameDataLoadSystem;
+    private ISave _gameDataSaveSystem;
+    private ILoad _gameDataLoadSystem;
 
     private void Awake()
     {
@@ -23,11 +23,25 @@ public class SaveLoadManagerGameData : MonoBehaviour
 
     public void LoadGameData()
     {
-        _gameDataLoadSystem.LoadGameData();
+        if (_gameDataLoadSystem != null)
+        {
+            _gameDataLoadSystem.Load();
+        } 
+        else
+        {
+            Debug.Log("GameDataLoadSystem is Null. Load is Failed.");
+        }
     }
-
+     
     public void SaveGameData()
     {
-        _gameDataSaveSystem.SaveGameData();
+        if (_gameDataSaveSystem != null)
+        {
+            _gameDataSaveSystem.Save();
+        }
+        else
+        {
+            Debug.Log("GameDataSaveSystem is Null. Save is Failed.");
+        }
     }
 }
