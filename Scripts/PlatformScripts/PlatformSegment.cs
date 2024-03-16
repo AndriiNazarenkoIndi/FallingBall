@@ -4,10 +4,10 @@ using System.Collections;
 
 public class PlatformSegment : MonoBehaviour
 {
-    [SerializeField] [Range(0.0f, 20.0f)] private float _timeToSetEnable = 1.0f;
     private MeshCollider _meshCollider;
+    private float _timeToSetEnable = 1.0f;
 
-    public UnityEvent triggerEnterBall;
+    public UnityEvent TriggerEnterBall;
 
     private void Start()
     {
@@ -28,12 +28,12 @@ public class PlatformSegment : MonoBehaviour
         if (other.TryGetComponent(out Ball ball))
         {
             _meshCollider.enabled = false;
-            triggerEnterBall?.Invoke();
-            StartCoroutine(TimeToSetEnabled());
+            TriggerEnterBall?.Invoke();
+            StartCoroutine(TimerToSetEnabled());
         }
     }
 
-    private IEnumerator TimeToSetEnabled()
+    private IEnumerator TimerToSetEnabled()
     {
         yield return new WaitForSeconds(_timeToSetEnable);
         _meshCollider.enabled = true;

@@ -6,7 +6,10 @@ public class PlatformRotator : MonoBehaviour
 
     private void Update()
     {
-        RotateObjectAxisY(_speedRotate);
+        if (_speedRotate != 0)
+        {
+            RotateObjectAxisY(_speedRotate);
+        }
     }
 
     private void RotateObjectAxisY(float speedRotate)
