@@ -3,8 +3,16 @@ using UnityEngine;
 
 public class GameDataLoadSystem : BaseSaveSystemGameData, ILoad
 {
-    public GameDataLoadSystem(CounterScore counterScore, DiamondsCounter diamondsCounter, ShopManager shopManager) : 
-        base(counterScore, diamondsCounter, shopManager) { }
+    private CounterScore _counterScore;
+    private DiamondsCounter _diamondsCounter;
+    private ShopManager _shopManager;
+
+    public GameDataLoadSystem(CounterScore counterScore, DiamondsCounter diamondsCounter, ShopManager shopManager) : base()
+    {
+        _counterScore = counterScore;
+        _diamondsCounter = diamondsCounter;
+        _shopManager = shopManager;
+    }
 
     public void Load()
     {

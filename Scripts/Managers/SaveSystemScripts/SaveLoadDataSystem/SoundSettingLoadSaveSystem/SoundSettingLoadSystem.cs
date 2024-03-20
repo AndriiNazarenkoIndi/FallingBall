@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class SoundSettingLoadSystem : BaseSaveSystemSoundSetting, ILoad
 {
-    public SoundSettingLoadSystem(AudioManager audioManager) : base(audioManager) { }
+    private AudioManager _audioManager;
+
+    public SoundSettingLoadSystem(AudioManager audioManager) : base()
+    {
+        _audioManager = audioManager;
+    }
 
     public void Load()
     {

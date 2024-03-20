@@ -1,24 +1,22 @@
 public abstract class BaseSaveSystemSoundSetting
 {
-    protected AudioManager _audioManager;
     protected SoundDataToSave _soundSetting;
     protected ISaveSystem _saveSystem;
     private string _fileName;
 
-    public BaseSaveSystemSoundSetting(AudioManager audioManager)
+    public BaseSaveSystemSoundSetting()
     {
-        _audioManager = audioManager;
         InitSaveSystem();
         InitSoundSetting();
     }
 
-    protected virtual void InitSaveSystem()
+    private void InitSaveSystem()
     {
         _fileName = SaveSystemConfig.soundSettingFileName;
         _saveSystem = new SaveSystem(_fileName);
     }
 
-    protected virtual void InitSoundSetting()
+    private void InitSoundSetting()
     {
         _soundSetting = new SoundDataToSave();
     }

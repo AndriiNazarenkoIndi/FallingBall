@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class SoundSettingSaveSystem : BaseSaveSystemSoundSetting, ISave
 {
-    public SoundSettingSaveSystem(AudioManager audioManager) : base(audioManager) { }
+    private AudioManager _audioManager;
+
+    public SoundSettingSaveSystem(AudioManager audioManager) : base() 
+    { 
+        _audioManager = audioManager;
+    }
 
     public void Save()
     {
