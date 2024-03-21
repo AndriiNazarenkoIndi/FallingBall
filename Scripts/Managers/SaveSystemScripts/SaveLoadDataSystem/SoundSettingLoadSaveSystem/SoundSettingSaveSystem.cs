@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-
 public class SoundSettingSaveSystem : BaseSaveSystemSoundSetting, ISave
 {
     private AudioManager _audioManager;
@@ -14,13 +13,18 @@ public class SoundSettingSaveSystem : BaseSaveSystemSoundSetting, ISave
     {
         try
         {
-            _soundSetting.musicStatus = _audioManager.MusicStatus;
-            _soundSetting.soundStatus = _audioManager.SoundStatus;
+            AssigningValues();
             _saveSystem.Save(_soundSetting);
         }
         catch (Exception ex)
         {
             Debug.Log("Save is failed. Exception: " + ex);
         }
+    }
+
+    private void AssigningValues()
+    {
+        _soundSetting.musicStatus = _audioManager.MusicStatus;
+        _soundSetting.soundStatus = _audioManager.SoundStatus;
     }
 }

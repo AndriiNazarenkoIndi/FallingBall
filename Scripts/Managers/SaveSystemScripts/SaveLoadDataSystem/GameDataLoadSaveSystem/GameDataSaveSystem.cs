@@ -18,15 +18,20 @@ public class GameDataSaveSystem : BaseSaveSystemGameData, ISave
     {
         try
         {
-            _gameData.maxScoreValue = _counterScore.MaxScore;
-            _gameData.maxDiamondsValue = _diamondsCounter.ScoreDiamonds;
-            _gameData.localScoreValue = _counterScore.LocalScore;
-            _gameData.totalAmountExtraLife = _shopManager.TotalAmountExtraLife;
+            AssigningValues();
             _saveSystem.Save(_gameData);
         }
         catch (Exception ex)
         {
             Debug.Log("Save is failed. Exception" + ex);
         }
+    }
+
+    private void AssigningValues()
+    {
+        _gameData.maxScoreValue = _counterScore.MaxScore;
+        _gameData.maxDiamondsValue = _diamondsCounter.ScoreDiamonds;
+        _gameData.localScoreValue = _counterScore.LocalScore;
+        _gameData.totalAmountExtraLife = _shopManager.TotalAmountExtraLife;
     }
 }

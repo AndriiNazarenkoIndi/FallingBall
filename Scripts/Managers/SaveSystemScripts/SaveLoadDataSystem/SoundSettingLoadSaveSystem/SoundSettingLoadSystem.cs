@@ -15,12 +15,17 @@ public class SoundSettingLoadSystem : BaseSaveSystemSoundSetting, ILoad
         try
         {
             _saveSystem.Load(_soundSetting);
-            _audioManager.MusicStatus = _soundSetting.musicStatus;
-            _audioManager.SoundStatus = _soundSetting.soundStatus;
+            AssigningValues();
         }
         catch (Exception ex)
         {
             Debug.Log("Load is failed. Exception: " + ex);
         }
+    }
+
+    private void AssigningValues()
+    {
+        _audioManager.MusicStatus = _soundSetting.musicStatus;
+        _audioManager.SoundStatus = _soundSetting.soundStatus;
     }
 }
